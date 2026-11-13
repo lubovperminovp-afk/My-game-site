@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Игры</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <ul class="menu">
+        <li><a href="index.html">Главная</a></li>
+        <li><a href="games.html">Игры</a></li>
+        <li><a href="contacts.html">Контакты</a></li>
+    </ul>
+
+    <h1>Мои любимые игры</h1>
+    <div class="card-container" id="games-container">
+        <p id="loading">Загрузка игр...</p>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js';
+        import { getFirestore } from 'https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js';
+
+        // ✅ ТОТ ЖЕ ПРОЕКТ, что и в index.html
+        const firebaseConfig = {
+            apiKey: "AIzaSyAAPgEit7Nfz4__XrjsymqXnM-AHesKbLw",
+            authDomain: "mygamesite-491fd.firebaseapp.com",
+            projectId: "mygamesite-491fd",
+            storageBucket: "mygamesite-491fd.firebasestorage.app",
+            messagingSenderId: "378557331037",
+            appId: "1:378557331037:web:c2ceb8f0b3652187b47fb4",
+            measurementId: "G-780SLL8WEJ"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        console.log('🔥 Firebase подключен на games.html!');
+        console.log('📦 Project ID:', firebaseConfig.projectId);
+
+        window.firebaseConfig = firebaseConfig;
+        window.db = db;
+        window.firebaseReady = true;
+    </script>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

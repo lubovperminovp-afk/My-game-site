@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мой первый сайт</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- =================================================== -->
+    <!-- БУРГЕР-МЕНЮ (Лабораторная №12)                     -->
+    <!-- =================================================== -->
+    <input type="checkbox" id="burger-toggle" class="burger-toggle">
+    <label for="burger-toggle" class="burger-label">≡ Меню</label>
+
+    <!-- =================================================== -->
+    <!-- НАВИГАЦИЯ                                          -->
+    <!-- =================================================== -->
+    <nav class="main-nav">
+        <ul class="nav-list">
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="games.html">Игры</a></li>
+            <li><a href="contacts.html">Контакты</a></li>
+            <li><a href="admin.html">Административная панель</a></li>
+        </ul>
+
+        <!-- Кнопка "Войти" -->
+        <button id="login-btn" class="login-btn">🔐 Войти</button>
+
+        <!-- Профиль пользователя -->
+        <div id="user-menu" class="user-menu" style="display: none;">
+            <span id="user-display-name" class="user-name">Пользователь</span>
+            <button id="logout-btn" class="logout-btn-small">Выйти</button>
+        </div>
+    </nav>
+
+    <!-- =================================================== -->
+    <!-- МОДАЛЬНОЕ ОКНО АУТЕНТИФИКАЦИИ                      -->
+    <!-- =================================================== -->
+    <div class="auth-modal" id="auth-modal">
+        <div class="auth-modal-window">
+            <button class="modal-close" id="modal-close">✕</button>
+            <h2 class="auth-title">🔐 Добро пожаловать!</h2>
+
+            <div class="auth-tabs">
+                <button class="auth-tab active" data-tab="login">Вход</button>
+                <button class="auth-tab" data-tab="register">Регистрация</button>
+            </div>
+
+            <!-- Форма входа -->
+            <form id="login-form" class="auth-form active">
+                <div class="form-group">
+                    <label for="login-email">Email:</label>
+                    <input type="email" id="login-email" placeholder="example@mail.ru" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Пароль:</label>
+                    <input type="password" id="login-password" placeholder="••••••" required>
+                </div>
+                <button type="submit" class="auth-btn">Войти</button>
+            </form>
+
+            <!-- Форма регистрации -->
+            <form id="register-form" class="auth-form">
+                <div class="form-group">
+                    <label for="register-name">Имя:</label>
+                    <input type="text" id="register-name" placeholder="Ваше имя" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-email">Email:</label>
+                    <input type="email" id="register-email" placeholder="example@mail.ru" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-password">Пароль (мин. 6 символов):</label>
+                    <input type="password" id="register-password" placeholder="••••••" minlength="6" required>
+                </div>
+                <button type="submit" class="auth-btn">Зарегистрироваться</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- =================================================== -->
+    <!-- ОСНОВНОЙ КОНТЕНТ                                    -->
+    <!-- =================================================== -->
+    <h1>Мой первый сайт</h1>
+
+    <h2>Обо мне</h2>
+    <p>Привет! Это моя первая веб-страница, созданная на лабораторной работе.</p>
+
+    <h2>Логотип университета</h2>
+    <img src="https://sys3.ru/synergyuniversity-ru/mediacenter/symbolism/ru_3.png"
+         alt="Логотип" width="150">
+
+    <h2>Моя аватарка</h2>
+    <img src="avatar.jpg" alt="Моя аватарка" width="150">
+
+    <!-- =================================================== -->
+    <!-- ПАНЕЛЬ ПОИСКА И ФИЛЬТРОВ (Лабораторная №11)        -->
+    <!-- =================================================== -->
+    <section class="filters-section">
+        <h2>🔎 Поиск и фильтры</h2>
+
+        <div class="filters-grid">
+            <div class="filter-group">
+                <label for="search-input">Поиск по названию:</label>
+                <input type="text" id="search-input" placeholder="Введите название...">
+            </div>
+
+            <div class="filter-group">
+                <label for="genre-filter">Жанр:</label>
+                <select id="genre-filter">
+                    <option value="">Все жанры</option>
+                    <option value="RPG">RPG</option>
+                    <option value="MOBA">MOBA</option>
+                    <option value="Battle Royale">Battle Royale</option>
+                    <option value="Шутер">Шутер</option>
+                    <option value="Dota2">Dota2</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label for="rating-filter">Мин. рейтинг:</label>
+                <input type="number" id="rating-filter" min="0" max="10" step="0.5" placeholder="0">
+            </div>
+
+            <div class="filter-group">
+                <label for="sort-filter">Сортировка:</label>
+                <select id="sort-filter">
+                    <option value="default">По умолчанию</option>
+                    <option value="rating-desc">Рейтинг ↓</option>
+                    <option value="rating-asc">Рейтинг ↑</option>
+                    <option value="title-asc">Название А-Я</option>
+                    <option value="title-desc">Название Я-А</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="filters-actions">
+            <button id="reset-filters" class="reset-btn">Сбросить фильтры</button>
+            <span id="results-count" class="results-count">Найдено: 0</span>
+        </div>
+    </section>
+
+    <!-- =================================================== -->
+    <!-- КАРТОЧКИ ИГР                                        -->
+    <!-- =================================================== -->
+    <h2>Наши игры</h2>
+    <div class="card-container" id="games-container">
+        <p id="loading">Загрузка игр...</p>
+    </div>
+
+    <!-- =================================================== -->
+    <!-- МОДАЛЬНОЕ ОКНО РЕДАКТИРОВАНИЯ (Лабораторная №7)    -->
+    <!-- =================================================== -->
+    <div class="modal-overlay" id="edit-modal">
+        <div class="modal-window">
+            <h2>✏️ Редактировать игру</h2>
+            <form id="edit-form">
+                <input type="hidden" id="edit-id">
+
+                <div class="form-group">
+                    <label for="edit-title">Название игры:</label>
+                    <input type="text" id="edit-title" required>
+                </div>
+                <div class="form-group">
+                    <label for="edit-genre">Жанр:</label>
+                    <input type="text" id="edit-genre" required>
+                </div>
+                <div class="form-group">
+                    <label for="edit-rating">Рейтинг (0–10):</label>
+                    <input type="number" id="edit-rating" min="0" max="10" step="0.1" required>
+                </div>
+                <div class="form-group">
+                    <label for="edit-imageUrl">Ссылка на картинку:</label>
+                    <input type="url" id="edit-imageUrl">
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" class="cancel-btn" id="cancel-edit">Отмена</button>
+                    <button type="submit" class="save-btn">Сохранить</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- =================================================== -->
+    <!-- ЛИДЕРБОРД                                           -->
+    <!-- =================================================== -->
+    <section class="leaderboard-section">
+        <h2>🏆 Таблица рекордов</h2>
+
+        <form id="score-form" class="score-form">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="player-name">Имя игрока:</label>
+                    <input type="text" id="player-name" placeholder="Ваше имя" required>
+                </div>
+                <div class="form-group">
+                    <label for="player-score">Очки:</label>
+                    <input type="number" id="player-score" placeholder="1000" min="0" required>
+                </div>
+                <div class="form-group">
+                    <label for="game-title">Игра:</label>
+                    <select id="game-title" required>
+                        <option value="">Выберите игру</option>
+                        <option value="Cyberpunk 2077">Cyberpunk 2077</option>
+                        <option value="Dota 2">Dota 2</option>
+                        <option value="PUBG: BATTLEGROUNDS">PUBG: BATTLEGROUNDS</option>
+                    </select>
+                </div>
+                <button type="submit" class="score-btn">➕ Добавить</button>
+            </div>
+        </form>
+
+        <div class="leaderboard-filter">
+            <label for="leaderboard-game-filter">Фильтр по игре:</label>
+            <select id="leaderboard-game-filter">
+                <option value="">Все игры</option>
+                <option value="Cyberpunk 2077">Cyberpunk 2077</option>
+                <option value="Dota 2">Dota 2</option>
+                <option value="PUBG: BATTLEGROUNDS">PUBG: BATTLEGROUNDS</option>
+            </select>
+        </div>
+
+        <div class="leaderboard-table-wrapper">
+            <table class="leaderboard-table">
+                <thead>
+                    <tr>
+                        <th>Место</th>
+                        <th>Игрок</th>
+                        <th>Очки</th>
+                        <th>Игра</th>
+                    </tr>
+                </thead>
+                <tbody id="leaderboard-body">
+                    <tr>
+                        <td colspan="4" style="text-align: center;">Загрузка...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- =================================================== -->
+    <!-- ПОДКЛЮЧЕНИЕ FIREBASE                                -->
+    <!-- =================================================== -->
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js';
+        import { getFirestore } from 'https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js';
+        import { getAnalytics } from 'https://www.gstatic.com/firebasejs/11.6.0/firebase-analytics.js';
+        import { getAuth } from 'https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js';
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAAPgEit7Nfz4__XrjsymqXnM-AHesKbLw",
+            authDomain: "mygamesite-491fd.firebaseapp.com",
+            projectId: "mygamesite-491fd",
+            storageBucket: "mygamesite-491fd.firebasestorage.app",
+            messagingSenderId: "378557331037",
+            appId: "1:378557331037:web:c2ceb8f0b3652187b47fb4",
+            measurementId: "G-780SLL8WEJ"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const auth = getAuth(app);
+        const analytics = getAnalytics(app);
+
+        console.log('🔥 Firebase подключен!');
+        console.log('📦 Project ID:', firebaseConfig.projectId);
+
+        window.firebaseConfig = firebaseConfig;
+        window.db = db;
+        window.auth = auth;
+        window.firebaseReady = true;
+
+        window.dispatchEvent(new Event('firebase-ready'));
+    </script>
+
+    <!-- Основной скрипт сайта — ПОСЛЕ Firebase -->
+    <script src="js/script.js"></script>
+</body>
+</html>
